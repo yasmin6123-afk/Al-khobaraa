@@ -21,7 +21,7 @@ function LocalNavbar() {
   );
 }
 
-// 2. مكون الـ Hero (الواجهة الرئيسية) المدمج لضمان عدم حدوث خطأ مسار
+// 2. مكون الـ Hero المدمج بالكامل هنا لتجنب أخطاء الملفات المفقودة
 function LocalHero() {
   return (
     <div className="bg-gradient-to-r from-blue-50 to-indigo-50 py-20 px-4 sm:px-6 lg:px-8 text-center">
@@ -64,8 +64,8 @@ function LocalFooter() {
   );
 }
 
-// 4. المكون الرئيسي للموقع الذي يجمع كل شيء بداخله مباشرة دون استدعاء خارجي
-function App() {
+// 4. المكون الرئيسي الشامل
+export default function App() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col" dir="rtl">
       <LocalNavbar />
@@ -76,5 +76,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
