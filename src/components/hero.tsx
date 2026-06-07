@@ -1,4 +1,3 @@
-// @ts-noncheck
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
