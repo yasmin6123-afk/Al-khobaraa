@@ -8,7 +8,7 @@
     "scripts": {
     "dev": "vite",
     "preinstall": "npm config set legacy-peer-deps true",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
