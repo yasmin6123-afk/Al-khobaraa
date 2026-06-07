@@ -1,4 +1,4 @@
-versel.json
 {
-  "installCommand": "npm install --legacy-peer-deps"
+  "installCommand": "npm install --legacy-peer-deps",
+  "buildCommand": "vite build"
 }
