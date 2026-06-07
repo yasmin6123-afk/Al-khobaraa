@@ -5,6 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "scripts": {
+    "dev": "vite",
+    "preinstall": "npm config set legacy-peer-deps true",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
     "build": "tsc --noEmit && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
