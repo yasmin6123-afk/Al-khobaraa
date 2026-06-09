@@ -1,15 +1,15 @@
-// @ts-nocheck
-import React from 'react';
 import Navbar from './components/navbar';
 import Hero from './components/hero';
 import Footer from './components/footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-between" dir="rtl">
+    <div className="min-h-screen bg-surface flex flex-col justify-between">
       <div>
         <Navbar />
-        <Hero />
+        <main>
+          <Hero />
+        </main>
       </div>
       <Footer />
     </div>

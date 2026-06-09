@@ -1,74 +1,49 @@
-// @ts-nockeck
-# React + TypeScript + Vite
+# Al-Khobaraa — الخبراء
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Landing page for **Al-Khobaraa for Import & Distribution of Medicines and Medical Supplies** (الخبراء لاستيراد وتوزيع الأدوية والمستلزمات الطبية).
 
-Currently, two official plugins are available:
+Bilingual (Arabic-first RTL / English LTR) single-page site built with:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **TypeScript** + **Vite 8**
+- **Tailwind CSS v4** (theme tokens in `src/index.css`)
+- **Framer Motion** for entrance animations
+- **react-i18next** for Arabic/English switching (persisted to `localStorage`, flips `<html dir>`)
+- **Lucide** icons
 
-## React Compiler
+## Project structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+.
+├── index.html              # Entry HTML (Arabic-first, loads fonts)
+├── public/                 # Static assets (favicon, icons)
+├── src/
+│   ├── main.tsx            # App bootstrap
+│   ├── App.tsx             # Page shell
+│   ├── i18n.ts             # i18next setup + ar/en translations
+│   ├── index.css           # Tailwind v4 theme tokens + base styles
+│   └── components/
+│       ├── navbar.tsx
+│       ├── hero.tsx
+│       └── footer.tsx
+└── vercel.json             # Vercel SPA config
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev       # start dev server
+npm run build     # type-check + production build (dist/)
+npm run preview   # serve the production build locally
+npm run lint      # eslint
 ```
+
+## Deploying to Vercel
+
+The repo is zero-config for Vercel — `vercel.json` pins the Vite framework preset, `dist` output, and an SPA rewrite.
+
+1. Push this repo to GitHub.
+2. In [Vercel](https://vercel.com/new), import the repository.
+3. Accept the detected settings (Framework: Vite) and deploy.
+
+Every push to `main` deploys to production; other branches get preview URLs.
